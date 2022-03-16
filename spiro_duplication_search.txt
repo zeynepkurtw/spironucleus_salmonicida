@@ -1,0 +1,6 @@
+makeblastdb -dbtype nucl -in  -out
+blastn -query  -db  -out  -perc_identity 95 -outfmt 6 -num_threads 30
+
+#biopython
+makeblastdb -dbtype nucl -in spiro.scf.fasta -out spiro.scf.db
+blastn -query spiro.scf.fasta -db spiro.scf.db -out spiro.xml -evalue 0.001 -outfmt 5 -num_threads 30

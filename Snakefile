@@ -8,7 +8,6 @@ rule run_repeatmodeller:
     input:
         genome="resource/{name}.fasta"
     output:
-        directory("2_genome_comp/output/{name}_RModeler"),
         "2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
     conda:
         "env/spironucleus.yaml"
@@ -19,7 +18,7 @@ rule run_repeatmodeller:
 rule run_repeatmasker:
     input:
         genome="2_genome_comp/resource/{name}.fasta",
-        lib="2_genome_comp/resource/{name}_db-families.fa"
+        lib="2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
     output:
         directory("2_genome_comp/output/{name}_RMasker")
     conda:

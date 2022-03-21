@@ -17,7 +17,7 @@ rule run_repeatmodeller:
 rule run_repeatmasker:
     input:
         genome="2_genome_comp/resource/spiro_V1.fasta",
-        lib="2_genome_comp/spiro_V1_RModeler/spiroV1_db-families.fa"
+        lib="2_genome_comp/resource/spiroV1_db-families.fa"
     output:
         directory("2_genome_comp/output/spiro_V1_RMasker")
     conda:

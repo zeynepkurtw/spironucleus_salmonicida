@@ -1,0 +1,6 @@
+name: spironucleus
+channels:
+  - bioconda
+dependencies:
+  - repeatmasker
+  - repeatmodeller

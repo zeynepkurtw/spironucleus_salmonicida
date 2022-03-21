@@ -1,10 +1,7 @@
-configfile: "config.yaml"
-
 rule all:
     output:
         directory("output/spiro_V1_RMasker"),
         #directory("output/spiro_V1_RModeler")
-
 
 rule run_repeatmodeller:
     input:

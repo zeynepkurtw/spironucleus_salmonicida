@@ -17,6 +17,10 @@ rule build_database:
             ".translation")
     params:
         db_name="2_genome_comp/output/{name}_RModeler/{name}_db"
+    conda:
+        "env/spironucleus.yaml"
+    script:
+        "scripts/builddatabase.py"
 
 rule repeatmodeler:
     input:

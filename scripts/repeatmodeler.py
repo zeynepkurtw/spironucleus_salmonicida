@@ -1,11 +1,8 @@
 from snakemake.shell import shell
 
-#input
-db = snakemake.input.db
-genome=snakemake.input.genome
+# input
 threads = snakemake.threads
+db_name = snakemake.params.db_name
 
+shell(f"RepeatModeler -database {db_name} -engine ncbi -pa {threads}")
 
-shell(f"""BuildDatabase -engine ncbi name {db} {genome} """)
-
-shell(f"""RepeatModeler -database {db} -engine ncbi -pa {threads} """)

@@ -3,7 +3,7 @@ configfile: "config.yaml"
 rule all:
     output:
         "output/spiro_V1",
-        "output/spiro_V2"
+        #"output/spiro_V2"
 
 rule run_repeatmodeller:
     input:

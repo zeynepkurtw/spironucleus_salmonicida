@@ -1,6 +1,6 @@
 
 rule all:
-    output:
+    input:
         directory("2_genome_comp/output/spiro_V1_RMasker"),
         #directory("output/spiro_V1_RModeler")
 

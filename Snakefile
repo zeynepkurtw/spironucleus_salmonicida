@@ -1,13 +1,14 @@
+
 rule all:
     output:
-        directory("output/spiro_V1_RMasker"),
+        directory("2_genome_comp/output/spiro_V1_RMasker"),
         #directory("output/spiro_V1_RModeler")
 
 rule run_repeatmodeller:
     input:
         "resource/spiro_V1.fasta"
     output:
-        directory("output/spiro_V1_RModeler")
+        directory("2_genome_comp/output/spiro_V1_RModeler")
     conda:
         "env/spironucleus.yaml"
     script:
@@ -15,10 +16,10 @@ rule run_repeatmodeller:
 
 rule run_repeatmasker:
     input:
-        genome="resource/spiro_V1.fasta",
+        genome="2_genome_comp/resource/spiro_V1.fasta",
         lib="spiro_V1_RModeler/spiroV1_db-families.fa"
     output:
-        directory("output/spiro_V1_RMasker")
+        directory("2_genome_comp/output/spiro_V1_RMasker")
     conda:
         "env/spironucleus.yaml"
     threads: 30

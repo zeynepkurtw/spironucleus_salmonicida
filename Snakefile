@@ -5,7 +5,7 @@ rule all:
 
 rule build_database:
     input:
-        "2_genome_comp/resource/{name}.fasta",
+        genome="2_genome_comp/resource/{name}.fasta",
     output:
         multiext("2_genome_comp/output/{name}_RModeler/{name}_db",
             ".nhr",

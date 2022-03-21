@@ -1,7 +1,7 @@
 configfile: "config.yaml"
 
 rule all:
-    input:
+    output:
         "output/spiro_V1",
         "output/spiro_V2"
 

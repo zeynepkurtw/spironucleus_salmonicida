@@ -6,7 +6,7 @@ rule all:
 
 rule run_repeatmodeller:
     input:
-        genome="resource/{name}.fasta"
+        genome="2_genome_comp/resource/{name}.fasta"
     output:
         "2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
     conda:

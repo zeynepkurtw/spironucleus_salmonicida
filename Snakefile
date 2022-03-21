@@ -3,12 +3,12 @@ configfile: "config.yaml"
 rule all:
     output:
         directory("output/spiro_V1_RMasker"),
-        directory("output/spiro_V1_RModeler")
+        #directory("output/spiro_V1_RModeler")
 
 
 rule run_repeatmodeller:
     input:
-        "resources/spiro_V1.fasta"
+        "resource/spiro_V1.fasta"
     output:
         directory("output/spiro_V1_RModeler")
     conda:
@@ -18,7 +18,7 @@ rule run_repeatmodeller:
 
 rule run_repeatmasker:
     input:
-        genome="resources/spiro_V1.fasta",
+        genome="resource/spiro_V1.fasta",
         lib="spiro_V1_RModeler/spiroV1_db-families.fa"
     output:
         directory("output/spiro_V1_RMasker")

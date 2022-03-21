@@ -1,19 +1,11 @@
 from snakemake.shell import shell
 
-#input,output
-query = snakemake.input.query
-out = snakemake.output[0]
+#input
+db = snakemake.input.db
+genome=snakemake.input.genome
+threads = snakemake.threads
 
 
+shell(f"""BuildDatabase -engine ncbi name {db} {genome} """)
 
-shell(f"""
-BuildDatabase\
- -engine ncbi\
- -name $DATABASE $SEQFILE
-""")
-
-shell(f"""RepeatModeler\
- -database $DATABASE\
-  -engine ncbi\
-   -pa $NSLOTS
-""")
+shell(f"""RepeatModeler -database {db} -engine ncbi -pa {threads} """)

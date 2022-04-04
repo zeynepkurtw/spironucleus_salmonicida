@@ -2,7 +2,7 @@ rule all:
     input:
         # "2_genome_comp/output/spiro_V2_RMasker",
         # "2_genome_comp/output/spiro_V1_RMasker"
-        "2_genome_comp/output/spiro_V1_RMasker_feifei"
+        "2_genome_comp/output/spiro_V1_feifei_RMasker"
 
 rule build_database:
     input:

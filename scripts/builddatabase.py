@@ -1,6 +1,5 @@
 from snakemake.shell import shell
 
-# input
 genome = snakemake.input.genome
 db_name = snakemake.params.db_name
 

@@ -1,6 +1,5 @@
 from snakemake.shell import shell
 
-# input,output
 genome = snakemake.input.genome
 lib = snakemake.input.lib
 out = snakemake.output

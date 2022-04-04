@@ -1,6 +1,5 @@
 from snakemake.shell import shell
 
-# input
 threads = snakemake.threads
 db_name = snakemake.params.db_name
 

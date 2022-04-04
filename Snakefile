@@ -48,3 +48,16 @@ rule repeatmasker:
     threads: 31
     script:
         "scripts/repeatmasker.py"
+
+rule repeatmasker_feifei:
+    input:
+        genome="2_genome_comp/resource/{name}.fasta",
+        lib="2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+    output:
+        directory("2_genome_comp/output/{name}_feifei_RMasker")
+    params:
+        feifei=True
+    conda:
+        "env/spironucleus.yaml"
+    script:
+        "scripts/repeatmasker.py"

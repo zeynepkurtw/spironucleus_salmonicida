@@ -64,7 +64,7 @@ rule repeatmasker_P:
         "env/spironucleus.yaml"
     threads: 31
     shell:
-        "RepeatMasker -species 'Diplomonadida' -gc 33 -x -poly -frag 600000 -parallel 10 -gff -dir {output} -excln -gccalc {input[0]} -lib {input[1]}"
+        "RepeatMasker -species Diplomonadida -gc 33 -x -poly -frag 600000 -parallel 10 -gff -dir {output} -excln -gccalc {input[0]} -lib {input[1]}"
 
 
 rule repeatmasker_feifei:

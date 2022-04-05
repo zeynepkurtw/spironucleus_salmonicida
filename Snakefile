@@ -68,8 +68,8 @@ rule repeatmasker_P:
     conda:
         "env/spironucleus.yaml"
     threads: 31
-    script:
-        "scripts/repeatmasker.py"
+    shell:
+        "RepeatMasker -species Diplomonadida -gc 33 -x -poly -frag 600000 -parallel 10 -gff -dir {out} -excln -gccalc -x {genome}"
 
 
 rule repeatmasker_feifei:

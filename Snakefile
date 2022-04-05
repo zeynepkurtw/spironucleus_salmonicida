@@ -56,20 +56,15 @@ rule repeatmasker:
 
 rule repeatmasker_P:
     input:
-        genome="2_genome_comp/resource/{name}.fasta",
-        lib="2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+        "2_genome_comp/resource/{name}.fasta",
+        "2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
     output:
         directory("2_genome_comp/output/{name}_RMasker_P")
-    params:
-        species="Diplomonadida",
-        gc=33,
-        frag=600000,
-        parallel=10
     conda:
         "env/spironucleus.yaml"
     threads: 31
     shell:
-        "RepeatMasker -species Diplomonadida -gc 33 -x -poly -frag 600000 -parallel 10 -gff -dir {directory} -excln -gccalc -x {genome} -lib {lib}"
+        "RepeatMasker -species Diplomonadida -gc 33 -x -poly -frag 600000 -parallel 10 -gff -dir {output} -excln -gccalc -x {input[0]} -lib {input[1]}"
 
 
 rule repeatmasker_feifei:

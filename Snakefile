@@ -2,8 +2,12 @@ rule all:
     input:
         # "2_genome_comp/output/spiro_V2_RMasker",
         # "2_genome_comp/output/spiro_V1_RMasker",
-        "2_genome_comp/output/spiro_V1_feifei_RMasker"
-        "2_genome_comp/output/spiro_V1_feifei_RMasker_lib_dip"
+        "2_genome_comp/output/spiro_V1_RMasker_P"
+        "2_genome_comp/output/spiro_V2_RMasker_P"
+
+    #"2_genome_comp/output/spiro_V1_feifei_RMasker"
+    #"2_genome_comp/output/spiro_V1_feifei_RMasker_lib_dip"
+
 
 rule build_database:
     input:
@@ -49,6 +53,24 @@ rule repeatmasker:
     threads: 31
     script:
         "scripts/repeatmasker.py"
+
+rule repeatmasker_P:
+    input:
+        genome="2_genome_comp/resource/{name}.fasta",
+        lib="2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+    output:
+        directory("2_genome_comp/output/{name}_RMasker_P")
+    params:
+        species="Diplomonadida",
+        gc=33,
+        frag=600000,
+        parallel=10
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/repeatmasker.py"
+
 
 rule repeatmasker_feifei:
     input:

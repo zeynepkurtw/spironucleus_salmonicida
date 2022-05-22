@@ -8,11 +8,11 @@ rule all:
         #"output/spiro_V1_feifei_RMasker"
         #"output/spiro_V1_feifei_RMasker_lib_dip"
         #TE
-        "/output/HIN_RMasker",
-        "/output/spiro_RMasker"
-        #"/output/wb_RMasker",
-        #"/output/muris_RMasker",
-        #"/output/kbiala_RMasker",
+        "output/HIN_RMasker",
+        "output/spiro_RMasker"
+        #"output/wb_RMasker",
+        #"output/muris_RMasker",
+        #"output/kbiala_RMasker",
 
 
 rule build_database:

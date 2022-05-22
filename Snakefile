@@ -5,10 +5,8 @@ rule all:
         #"output/spiro_V1_RMasker",
         #"output/spiro_V1_RMasker_P",
         #"output/spiro_V2_RMasker_P"
-
         #"output/spiro_V1_feifei_RMasker"
         #"output/spiro_V1_feifei_RMasker_lib_dip"
-
         #TE
         "/output/HIN_RMasker",
         "/output/spiro_RMasker",

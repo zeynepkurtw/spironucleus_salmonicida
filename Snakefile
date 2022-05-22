@@ -1,19 +1,27 @@
 rule all:
     input:
-        "2_genome_comp/output/spiro_V2_RMasker",
-        "2_genome_comp/output/spiro_V1_RMasker",
-        "2_genome_comp/output/spiro_V1_RMasker_P",
-        "2_genome_comp/output/spiro_V2_RMasker_P"
+        #Spiro new genome paper
+        #"output/spiro_V2_RMasker",
+        #"output/spiro_V1_RMasker",
+        #"output/spiro_V1_RMasker_P",
+        #"output/spiro_V2_RMasker_P"
 
-    #"2_genome_comp/output/spiro_V1_feifei_RMasker"
-    #"2_genome_comp/output/spiro_V1_feifei_RMasker_lib_dip"
+        #"output/spiro_V1_feifei_RMasker"
+        #"output/spiro_V1_feifei_RMasker_lib_dip"
+
+        #TE
+        "/output/HIN_RMasker",
+        "/output/spiro_RMasker",
+        #"/output/wb_RMasker",
+        #"/output/muris_RMasker",
+        #"/output/kbiala_RMasker",
 
 
 rule build_database:
     input:
-        genome="2_genome_comp/resource/{name}.fasta",
+        genome="resource/{name}.fasta",
     output:
-        multiext("2_genome_comp/output/{name}_RModeler/{name}_db",
+        multiext("output/{name}_RModeler/{name}_db",
             ".nhr",
             ".nnd",
             ".nin",
@@ -22,7 +30,7 @@ rule build_database:
             ".nsq",
             ".translation")
     params:
-        db_name="2_genome_comp/output/{name}_RModeler/{name}_db"
+        db_name="output/{name}_RModeler/{name}_db"
     conda:
         "env/spironucleus.yaml"
     script:
@@ -30,12 +38,12 @@ rule build_database:
 
 rule repeatmodeler:
     input:
-        genome="2_genome_comp/resource/{name}.fasta",
-        db="2_genome_comp/output/{name}_RModeler/{name}_db.nhr"
+        genome="resource/{name}.fasta",
+        db="output/{name}_RModeler/{name}_db.nhr"
     output:
-        "2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+        "output/{name}_RModeler/{name}_db-families.fa"
     params:
-        db_name="2_genome_comp/output/{name}_RModeler/{name}_db"
+        db_name="output/{name}_RModeler/{name}_db"
     conda:
         "env/spironucleus.yaml"
     threads: 31
@@ -44,10 +52,10 @@ rule repeatmodeler:
 
 rule repeatmasker:
     input:
-        genome="2_genome_comp/resource/{name}.fasta",
-        lib="2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+        genome="resource/{name}.fasta",
+        lib="output/{name}_RModeler/{name}_db-families.fa"
     output:
-        directory("2_genome_comp/output/{name}_RMasker")
+        directory("output/{name}_RMasker")
     conda:
         "env/spironucleus.yaml"
     threads: 31
@@ -56,10 +64,10 @@ rule repeatmasker:
 
 rule repeatmasker_P:
     input:
-        "2_genome_comp/resource/{name}.fasta",
-        "2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+        "resource/{name}.fasta",
+        "output/{name}_RModeler/{name}_db-families.fa"
     output:
-        directory("2_genome_comp/output/{name}_RMasker_P")
+        directory("output/{name}_RMasker_P")
     conda:
         "env/spironucleus.yaml"
     threads: 31
@@ -69,10 +77,10 @@ rule repeatmasker_P:
 
 rule repeatmasker_feifei:
     input:
-        genome="2_genome_comp/resource/{name}.fasta",
-        lib="2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+        genome="resource/{name}.fasta",
+        lib="output/{name}_RModeler/{name}_db-families.fa"
     output:
-        directory("2_genome_comp/output/{name}_feifei_RMasker")
+        directory("output/{name}_feifei_RMasker")
     params:
         feifei=True
     conda:
@@ -82,10 +90,10 @@ rule repeatmasker_feifei:
 
 rule repeatmasker_feifei_lib_dip:
     input:
-        genome="2_genome_comp/resource/{name}.fasta",
-    # lib="2_genome_comp/output/{name}_RModeler/{name}_db-families.fa"
+        genome="resource/{name}.fasta",
+    # lib="output/{name}_RModeler/{name}_db-families.fa"
     output:
-        directory("2_genome_comp/output/{name}_feifei_RMasker_lib_dip")
+        directory("output/{name}_feifei_RMasker_lib_dip")
     params:
         lib_dip=True
     conda:

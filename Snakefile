@@ -46,7 +46,7 @@ rule repeatmodeler:
         db_name="output/{name}_RModeler/{name}_db"
     conda:
         "env/spironucleus.yaml"
-    threads: 8
+    threads: 31
     script:
         "scripts/repeatmodeler.py"
 

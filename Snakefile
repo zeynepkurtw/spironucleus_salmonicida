@@ -14,9 +14,7 @@ rule all:
         #"output/wb_RMasker",
         #"output/muris_RMasker",
         #"output/kbiala_RMasker",
-        "output/HIN.fasta",
-
-
+        "output/HIN_RMasker",
 
 
 rule build_database:

@@ -1,2 +1,4 @@
 /Jupyter/
-
+/resource/
+/output/
+/.snakemake/

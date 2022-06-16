@@ -1,6 +1,7 @@
 name: spironucleus
 channels:
   - bioconda
+  - conda-forge
 dependencies:
   - repeatmasker
-  - repeatmodeler
+  - repeatmodeler= 2.0.1

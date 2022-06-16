@@ -8,10 +8,11 @@ rule all:
         #"output/spiro_V1_feifei_RMasker"
         #"output/spiro_V1_feifei_RMasker_lib_dip"
         #TE
-        "output/HIN_RMasker",
-        "output/spiro_RMasker",
-        "output/wb_RMasker",
-        "output/muris_RMasker",
+        #"output/HIN_aa_RMasker", # ddint work on proteome as expected
+        "output/HIN_assembly_RMasker",
+        "output/spiro_V2_RMasker",
+        #"output/wb_RMasker",
+        #"output/muris_RMasker",
         #"output/kbiala_RMasker",
 
 
@@ -44,7 +45,7 @@ rule repeatmodeler:
         db_name="output/{name}_RModeler/{name}_db"
     conda:
         "env/spironucleus.yaml"
-    threads: 31
+    threads: 8
     script:
         "scripts/repeatmodeler.py"
 
@@ -98,3 +99,5 @@ rule repeatmasker_feifei_lib_dip:
         "env/spironucleus.yaml"
     script:
         "scripts/repeatmasker.py"
+
+#snakemake -c1 --use-conda --printshellcmds

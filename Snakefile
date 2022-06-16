@@ -9,11 +9,14 @@ rule all:
         #"output/spiro_V1_feifei_RMasker_lib_dip"
         #TE
         #"output/HIN_aa_RMasker", # ddint work on proteome as expected
-        "output/HIN_assembly_RMasker",
-        "output/spiro_V2_RMasker",
+        #"output/HIN_assembly_RMasker",
+        #"output/spiro_V2_RMasker",
         #"output/wb_RMasker",
         #"output/muris_RMasker",
         #"output/kbiala_RMasker",
+        "output/HIN.fasta",
+
+
 
 
 rule build_database:

@@ -5,3 +5,4 @@ channels:
 dependencies:
   - repeatmasker
   - repeatmodeler= 2.0.1
+  - trf

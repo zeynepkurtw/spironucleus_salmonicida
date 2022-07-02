@@ -15,6 +15,9 @@ rule all:
         #"output/muris_RMasker",
         #"output/kbiala_RMasker",
         "output/HIN_RMasker",
+        "output/HIN_TRF"
+
+
 
 
 rule build_database:
@@ -62,6 +65,36 @@ rule repeatmasker:
     script:
         "scripts/repeatmasker.py"
 
+
+rule tandem_repeat_finder:
+    input:
+        genome = "resource/{name}.fasta"
+    output:
+        directory("output/{name}_TRF")
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/trf.py"
+
+
+
+    #History
+"""
+#I realised that I can't run RM on protein seq. 
+rule repeatmasker_custom_db:
+    input:
+        genome = "resource/{name}.fasta",
+        lib = "output/{name}_RModeler/{name}_db_lrr.fa"
+    output:
+        directory("output/{name}_RMasker")
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/repeatmasker.py"
+
+
 rule repeatmasker_P:
     input:
         "resource/{name}.fasta",
@@ -101,4 +134,4 @@ rule repeatmasker_feifei_lib_dip:
     script:
         "scripts/repeatmasker.py"
 
-#snakemake -c1 --use-conda --printshellcmds
+#snakemake -c1 --use-conda --printshellcmds"""

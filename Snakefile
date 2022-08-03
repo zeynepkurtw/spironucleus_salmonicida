@@ -15,8 +15,10 @@ rule all:
         #"output/muris_RMasker",
         #"output/kbiala_RMasker",
         "output/HIN_RMasker",
-        "output/HIN_TRF"
+        "output/HIN_TRF",
 
+        #eggnog
+        "output/3_eggnog/spiro.emapper.annotations"
 
 
 
@@ -76,6 +78,16 @@ rule tandem_repeat_finder:
     threads: 31
     script:
         "scripts/trf.py"
+
+rule eggnog:
+    input:
+        genome="resource/3_eggnog/{genome}.faa"
+    output:
+        "output/3_eggnog/{genome}.emapper.annotations"
+    threads: 31
+    script:
+        "scripts/eggnog.py"
+
 
 
 

@@ -17,7 +17,8 @@ rule all:
         #"output/HIN_RMasker",
         #"output/HIN_TRF",
         #eggnog
-        "output/3_eggnog/spiro.emapper.annotations"
+        "output/3_eggnog/spiro.emapper.annotations",
+        "output/3_eggnog/wb.emapper.annotations"
 
 
 

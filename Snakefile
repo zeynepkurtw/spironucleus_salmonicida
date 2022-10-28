@@ -53,7 +53,7 @@ rule repeatmodeler:
         "env/spironucleus.yaml"
     threads: 31
     script:
-        "scripts/repeatmodeler.py"
+        "scripts/Rmodeler.py"
 
 rule repeatmasker:
     input:

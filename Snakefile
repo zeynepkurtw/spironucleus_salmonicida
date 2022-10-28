@@ -65,7 +65,7 @@ rule repeatmasker:
         "env/spironucleus.yaml"
     threads: 31
     script:
-        "scripts/repeatmasker.py"
+        "scripts/Rmasker.py"
 
 
 rule tandem_repeat_finder:

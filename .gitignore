@@ -2,3 +2,4 @@
 /resource/
 /output/
 /.snakemake/
+/scratch/

@@ -30,7 +30,7 @@ rule build_database:
     input:
         genome="resource/1_repeatmasker/{name}.fasta",
     output:
-        multiext("output/{name}_RModeler/{name}_db",
+        multiext("output/1_repeatmasker/{name}_RModeler/{name}_db",
             ".nhr",
             ".nnd",
             ".nin",
@@ -50,9 +50,9 @@ rule repeatmodeler:
         genome="resource/1_repeatmasker/{name}.fasta",
         db="output/1_repeatmasker/{name}_RModeler/{name}_db.nhr"
     output:
-        "output/{name}_RModeler/{name}_db-families.fa"
+        "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
     params:
-        db_name="output/{name}_RModeler/{name}_db"
+        db_name="output/1_repeatmasker/{name}_RModeler/{name}_db"
     conda:
         "env/spironucleus.yaml"
     threads: 8
@@ -64,7 +64,7 @@ rule repeatmasker:
         genome="resource/1_repeatmasker/{name}.fasta",
         lib="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
     output:
-        directory("output/{name}_RMasker")
+        directory("output/1_repeatmasker/{name}_RMasker")
     conda:
         "env/spironucleus.yaml"
     threads: 31

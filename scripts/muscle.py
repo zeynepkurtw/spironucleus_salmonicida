@@ -1,8 +1,8 @@
 from snakemake.shell import shell
 
 fasta = snakemake.input.fasta
-out = snakemake.output[0]
-log = snakemake.output[1]
+out = snakemake.output
+log = snakemake.output
 
 shell(f"""muscle -align {fasta} -output {out} -log {log}""")
 

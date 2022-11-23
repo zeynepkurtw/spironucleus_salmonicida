@@ -1,3 +1,5 @@
+configfile: "config.yaml"
+
 rule all:
     input:
         #Spiro new genome paper
@@ -17,14 +19,15 @@ rule all:
         #"output/HIN_RMasker",
         #"output/HIN_TRF",
         #eggnog
-        "output/3_eggnog/spiro.emapper.annotations",
-        "output/3_eggnog/wb.emapper.annotations"
+        #"output/3_eggnog/spiro.emapper.annotations",
+        #"output/3_eggnog/wb.emapper.annotations"
+        "output/spiro_RModeler/spiro_db-families.fa"
 
 
 
 rule build_database:
     input:
-        genome="resource/{name}.fasta",
+        genome="resource/1_repeatmasker/{name}.fasta",
     output:
         multiext("output/{name}_RModeler/{name}_db",
             ".nhr",
@@ -43,7 +46,7 @@ rule build_database:
 
 rule repeatmodeler:
     input:
-        genome="resource/{name}.fasta",
+        genome="resource/1_repeatmasker/{name}.fasta",
         db="output/{name}_RModeler/{name}_db.nhr"
     output:
         "output/{name}_RModeler/{name}_db-families.fa"
@@ -51,13 +54,13 @@ rule repeatmodeler:
         db_name="output/{name}_RModeler/{name}_db"
     conda:
         "env/spironucleus.yaml"
-    threads: 31
+    threads: 8
     script:
         "scripts/Rmodeler.py"
 
 rule repeatmasker:
     input:
-        genome="resource/{name}.fasta",
+        genome="resource/1_repeatmasker/{name}.fasta",
         lib="output/{name}_RModeler/{name}_db-families.fa"
     output:
         directory("output/{name}_RMasker")
@@ -70,7 +73,7 @@ rule repeatmasker:
 
 rule tandem_repeat_finder:
     input:
-        genome = "resource/{name}.fasta"
+        genome = "resource/1_repeatmasker/{name}.fasta"
     output:
         directory("output/{name}_TRF")
     conda:
@@ -79,15 +82,41 @@ rule tandem_repeat_finder:
     script:
         "scripts/trf.py"
 
-rule eggnog:
+"""rule eggnog:
     input:
-        genome="resource/3_eggnog/{genome}.faa"
+        genome="resource/1_repeatmasker/3_eggnog/{genome}.faa"
     output:
         "output/3_eggnog/{genome}.emapper.annotations"
     threads: 31
     script:
-        "scripts/eggnog.py"
+        "scripts/eggnog.py""""
 
+rule muscle:
+    input:
+        "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
+    output:
+        "output/2_muscle/{name}.muscle.fasta"
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/muscle.py"
+
+
+rule hmmer:
+    input:
+            align="output/2_muscle/{name}.muscle.fasta",
+            hmm= "output/3_hmm/{name}.hmm",
+            db= "resource/1_repeatmasker/{name}.fasta"
+    output:
+            "output/3_hmm/{name}.hmm",
+            directory("output/3_hmm/{name}_hmm")
+
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/hmmer.py"
 
 
 

@@ -95,7 +95,7 @@ rule tandem_repeat_finder:
 
 rule muscle:
     input:
-        "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
+        fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
     output:
         "output/2_muscle/{name}.muscle.fasta"
     conda:

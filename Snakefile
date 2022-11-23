@@ -21,7 +21,8 @@ rule all:
         #eggnog
         #"output/3_eggnog/spiro.emapper.annotations",
         #"output/3_eggnog/wb.emapper.annotations"
-        "output/spiro_RModeler/spiro_db-families.fa"
+        "output/1_repeatmasker/spiro_RModeler/spiro_db-families.fa",
+        expand("output/3_hmm/{name}.hmm", n=["HIN", "spiro", "wb", "muris"])
 
 
 
@@ -47,7 +48,7 @@ rule build_database:
 rule repeatmodeler:
     input:
         genome="resource/1_repeatmasker/{name}.fasta",
-        db="output/{name}_RModeler/{name}_db.nhr"
+        db="output/1_repeatmasker/{name}_RModeler/{name}_db.nhr"
     output:
         "output/{name}_RModeler/{name}_db-families.fa"
     params:
@@ -61,7 +62,7 @@ rule repeatmodeler:
 rule repeatmasker:
     input:
         genome="resource/1_repeatmasker/{name}.fasta",
-        lib="output/{name}_RModeler/{name}_db-families.fa"
+        lib="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
     output:
         directory("output/{name}_RMasker")
     conda:

@@ -1,4 +1,3 @@
-import snakemake
 from snakemake.shell import shell
 
 fasta = snakemake.input.fasta

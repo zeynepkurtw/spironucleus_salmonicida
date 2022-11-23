@@ -89,7 +89,8 @@ rule tandem_repeat_finder:
         "output/3_eggnog/{genome}.emapper.annotations"
     threads: 31
     script:
-        "scripts/eggnog.py""""
+        "scripts/eggnog.py"
+        """
 
 rule muscle:
     input:

@@ -117,12 +117,12 @@ rule clustal_omega:
 
 rule hmmer:
     input:
-            align="output/3_clustal_o/{name}.clustal.selex",
+            #align="output/3_clustal_o/{name}.clustal.selex",
+            fasta = "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa",
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",
             out = directory("output/3_hmm/{name}_hmm")
-
     conda:
         "env/spironucleus.yaml"
     threads: 31

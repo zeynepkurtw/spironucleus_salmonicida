@@ -7,4 +7,5 @@ dependencies:
   - repeatmodeler
   - trf
   - muscle
+  - clustalo
   - hmmer

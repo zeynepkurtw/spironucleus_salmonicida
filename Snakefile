@@ -104,10 +104,20 @@ rule muscle:
     script:
         "scripts/muscle.py"
 
+rule clustal_omega:
+    input:
+        fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
+    output:
+        "output/2_clustal_o/{name}.clustal.msf"
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/clustal_omega.py"
 
 rule hmmer:
     input:
-            align="output/2_muscle/{name}.muscle.afa",
+            align="output/3_clustal_0/{name}.clustal.msf",
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",

@@ -50,7 +50,7 @@ rule repeatmodeler:
         genome="resource/1_repeatmasker/{name}.fasta",
         db="output/1_repeatmasker/{name}_RModeler/{name}_db.nhr"
     output:
-        "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
+        "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta"
     params:
         db_name="output/1_repeatmasker/{name}_RModeler/{name}_db"
     conda:
@@ -62,7 +62,7 @@ rule repeatmodeler:
 rule repeatmasker:
     input:
         genome="resource/1_repeatmasker/{name}.fasta",
-        lib="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
+        lib="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta"
     output:
         directory("output/1_repeatmasker/{name}_RMasker")
     conda:
@@ -95,7 +95,7 @@ rule tandem_repeat_finder:
 
 rule muscle:
     input:
-        fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
+        fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta"
     output:
         "output/2_muscle/{name}.muscle.afa"
     conda:
@@ -106,7 +106,7 @@ rule muscle:
 
 rule clustal_omega:
     input:
-        fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
+        fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta"
     output:
         "output/3_clustal_o/{name}.clustal.selex"
     conda:
@@ -118,7 +118,7 @@ rule clustal_omega:
 rule hmmer:
     input:
             #align="output/3_clustal_o/{name}.clustal.selex",
-            fasta = "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa",
+            fasta = "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta",
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",

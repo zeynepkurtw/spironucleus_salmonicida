@@ -97,7 +97,7 @@ rule muscle:
     input:
         fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fa"
     output:
-        "output/2_muscle/{name}.muscle.fasta"
+        "output/2_muscle/{name}.muscle.afa"
     conda:
         "env/spironucleus.yaml"
     threads: 31
@@ -107,7 +107,7 @@ rule muscle:
 
 rule hmmer:
     input:
-            align="output/2_muscle/{name}.muscle.fasta",
+            align="output/2_muscle/{name}.muscle.afa",
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",

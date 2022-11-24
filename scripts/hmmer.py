@@ -1,7 +1,7 @@
 from snakemake.shell import shell
 
-align = snakemake.input.align[0]
-db= snakemake.input.db[1]
+align = snakemake.input.align
+db= snakemake.input.db
 
 hmm = snakemake.output[0]
 out = snakemake.output[1]

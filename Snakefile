@@ -108,11 +108,10 @@ rule muscle:
 rule hmmer:
     input:
             align="output/2_muscle/{name}.muscle.fasta",
-            #hmm= "output/3_hmm/{name}.hmm",
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
-            "output/3_hmm/{name}.hmm",
-            directory("output/3_hmm/{name}_hmm")
+            hmm = "output/3_hmm/{name}.hmm",
+            out = directory("output/3_hmm/{name}_hmm")
 
     conda:
         "env/spironucleus.yaml"

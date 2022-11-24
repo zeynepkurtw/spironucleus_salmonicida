@@ -117,7 +117,7 @@ rule clustal_omega:
 
 rule hmmer:
     input:
-            align="output/3_clustal_o/{name}.clustal.msf",
+            align="output/3_clustal_o/{name}.clustal.selex",
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",

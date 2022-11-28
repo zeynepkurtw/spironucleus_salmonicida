@@ -23,7 +23,7 @@ rule all:
         #"output/3_eggnog/wb.emapper.annotations"
         #"output/1_repeatmasker/spiro_RModeler/spiro_db-families.fa",
         expand("output/3_hmm/{n}.hmm", n=["HIN", "spiro", "wb", "muris"]),
-        expand("output/4_hmm_repeatmasker/{n}_RMasker", n=["HIN", "spiro", "wb", "muris"])
+        #expand("output/4_hmm_repeatmasker/{n}_RMasker", n=["HIN", "spiro", "wb", "muris"])
 
 
 

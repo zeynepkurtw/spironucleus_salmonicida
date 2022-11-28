@@ -128,7 +128,7 @@ rule clustal_omega:
     script:
         "scripts/clustal_omega.py"
 
-rule hmmer:
+""""rule hmmer_search:
     input:
             align="output/3_clustal_o/{name}.clustal.st",
             #fasta = "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta",
@@ -136,6 +136,17 @@ rule hmmer:
     output:
             hmm = "output/3_hmm/{name}.hmm",
             #out = directory("output/3_hmm/{name}_hmm")
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/hmmer.py"""""
+
+rule hmmer_build:
+    input:
+            align="output/3_clustal_o/{name}.clustal.st",
+    output:
+            hmm = "output/3_hmm/{name}.hmm",
     conda:
         "env/spironucleus.yaml"
     threads: 31

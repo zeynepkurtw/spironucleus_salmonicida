@@ -9,5 +9,5 @@ out = snakemake.output[1]
 
 #shell(f"""hmmbuild {hmm} {align}""")
 shell(f"""hmmbuild {hmm} {align}""")
-shell(f"""hmmcalibrate {hmm}""")
+#shell(f"""hmmcalibrate {hmm}""")
 shell(f"""hmmsearch {hmm} {db}""")

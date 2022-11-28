@@ -132,7 +132,7 @@ rule hmmer:
     input:
             align="output/3_clustal_o/{name}.clustal.st",
             #fasta = "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta",
-            db= "resource/1_repeatmasker/{name}.fasta"
+            #db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",
             #out = directory("output/3_hmm/{name}_hmm")

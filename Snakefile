@@ -77,7 +77,7 @@ rule repeatmasker_hmm:
         genome="resource/1_repeatmasker/{name}.fasta",
         hmm="output/3_hmm/{name}_hmm"
     output:
-        directory("output/2_hmm_repeatmasker/{name}_RMasker")
+        directory("output/4_hmm_repeatmasker/{name}_RMasker")
     conda:
         "env/spironucleus.yaml"
     threads: 31

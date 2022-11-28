@@ -108,7 +108,7 @@ rule clustal_omega:
     input:
         fasta="output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta"
     output:
-        "output/3_clustal_o/{name}.clustal.selex"
+        "output/3_clustal_o/{name}.clustal.st"
     conda:
         "env/spironucleus.yaml"
     threads: 31
@@ -117,8 +117,8 @@ rule clustal_omega:
 
 rule hmmer:
     input:
-            #align="output/3_clustal_o/{name}.clustal.selex",
-            fasta = "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta",
+            align="output/3_clustal_o/{name}.clustal.st",
+            #fasta = "output/1_repeatmasker/{name}_RModeler/{name}_db-families.fasta",
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",

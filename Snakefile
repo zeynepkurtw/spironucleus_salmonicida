@@ -135,7 +135,7 @@ rule hmmer:
             db= "resource/1_repeatmasker/{name}.fasta"
     output:
             hmm = "output/3_hmm/{name}.hmm",
-            out = directory("output/3_hmm/{name}_hmm")
+            #out = directory("output/3_hmm/{name}_hmm")
     conda:
         "env/spironucleus.yaml"
     threads: 31

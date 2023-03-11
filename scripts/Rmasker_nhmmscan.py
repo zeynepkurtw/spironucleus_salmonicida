@@ -7,4 +7,4 @@ threads = snakemake.threads
 
 
 #Snsitive search with hmm profiles
-shell(f"RepeatMasker -lib {hmm} -nhmmscan {genome} -s -pa {threads} xsmall -dir {out}")
+shell(f"RepeatMasker -lib {hmm} -hmmer {genome} -s -pa {threads} xsmall -dir {out}")

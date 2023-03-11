@@ -23,8 +23,8 @@ rule all:
         #"output/3_eggnog/wb.emapper.annotations"
         #"output/1_repeatmasker/spiro_RModeler/spiro_db-families.fa",
         expand("output/3_hmm/{n}.hmm", n=["HIN", "spiro", "wb", "muris"]),
-        expand("output/4_hmm_repeatmasker/{n}_RMasker", n=["HIN", "spiro", "wb", "muris"])
-
+        expand("output/4_hmm_repeatmasker/{n}_RMasker", n=["HIN", "spiro", "wb", "muris"]),
+        expand("output/5_hmm_repeatmasker_garlic/{n}_RMasker",n=["spiro", "wb", "muris"])
 
 
 rule build_database:
@@ -83,6 +83,27 @@ rule repeatmasker_hmm:
     threads: 31
     script:
         "scripts/Rmasker_hmm.py"
+
+rule repeatmasker_hmm_garlic:
+    input:
+        genome="resource/1_repeatmasker/{name}.fasta",
+        hmm="resource/2_hmm_garlic/{name}.hmm"
+    output:
+        directory("output/5_hmm_repeatmasker_garlic/{name}_RMasker")
+    conda:
+        "env/spironucleus.yaml"
+    threads: 31
+    script:
+        "scripts/Rmasker_hmm.py"
+
+
+
+
+
+
+
+
+
 
 
 rule tandem_repeat_finder:

@@ -8,4 +8,5 @@ dependencies:
   - trf
   - muscle
   - clustalo
-  - hmmer
+  #- hmmer
+  - hmmer2

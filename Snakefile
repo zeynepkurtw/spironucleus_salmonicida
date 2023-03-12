@@ -83,7 +83,8 @@ rule repeatmasker:
         "env/spironucleus.yaml"
     threads: 31
     script:
-        "scripts/Rmasker_hmm.py""""
+        "scripts/Rmasker_hmm.py"
+        """
 
 rule repeatmasker_hmm_garlic:
     input:

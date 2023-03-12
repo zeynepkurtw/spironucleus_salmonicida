@@ -5,4 +5,4 @@ out = snakemake.output
 
 
 #Search with hmm profiles
-shell(f"hmmcalibrate2 -f 0.01 {hmm} > {out}")
+shell(f"hmmcalibrate2 -F 0.01 {hmm} > {out}")
